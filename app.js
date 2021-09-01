@@ -1,4 +1,27 @@
 "use strict"
+// Most Wanted Project User Stories Algorithms
+// #1: As a user, I want to be able to search for someone based on a single criterion
+// Algorithm for Search by single criteria:
+// -prompt user for a single criteria, i.e Name
+// -criteria must be an element from the database
+// -return all elements associated with that single criteria
+// -Use debugging tool to find error in code for "undefined" in prompt box
+// 
+//#2: As a user, I want to be able to search for someone based on multiple traits (up to a
+// maximum of five criteria at once).
+// Algorithm for multiple criteria search
+// -prompt user to select (from a list?) up to 5 criteria
+// -return all Names associated with all input criteria utilizing .filter?
+
+//#3: As a user, after locating a person, I want to see only that person’s descendants (display the  names of the descendants).
+// Algorithm for seeing only that person's descendants
+// -Utilizing debugging tool to search for possible solution entry of "descendants" into prompt box 
+
+//#4: As a user, after locating a person, I want to see only that person's immediate family members, displaying the names
+//  of the family members and their relation to the found person.
+// Algorithm for seeing  only that person's immediate family members
+//  -Utilizing debugging tool to search for possible solution entry of "family" into prompt box
+
 
 
 //Menu functions.
