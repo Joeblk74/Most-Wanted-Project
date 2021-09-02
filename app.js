@@ -40,9 +40,10 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      // TODO: search by traits
-      break;
+      searchResults = searchByTrait(people);
+    break;
       default:
+        alert('nop')
     app(people); // restart app
       break;
   }
@@ -61,7 +62,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch(displayOption){
     case "info":
@@ -113,6 +114,14 @@ function searchByEyeColor(people){
 }
 
 //TODO: add other trait filter functions here.
+function searchByTrait(people){
+let trait = prompt('Would you like to search by gender, age, eye color, weight or height?');
+let result = [];
+switch(trait){
+  case 'gender':
+    results = gender(person);
+    displayPeople(results)
+}}
 
 
 
@@ -138,9 +147,6 @@ function displayPerson(person){
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
 }
-
-//#endregion
-
 
 
 //Validation functions.
@@ -183,4 +189,3 @@ function customValidation(input){
   
 }
 
-//#endregion
