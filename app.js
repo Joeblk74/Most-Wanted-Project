@@ -6,7 +6,11 @@
 // -criteria must be an element from the database
 // -return all elements associated with that single criteria
 // -Use debugging tool to find error in code for "undefined" in prompt box
-// 
+// -Prompt the user for which criteria they would like to search for (i.e. eye color)
+// -Prompt the user for the criteria calue they would like to search for (i.e. "blue")
+// -Use their input to filter the data the data set for only objects that match their criteria
+// -Return the  objects that match to the caller of the function!
+
 //#2: As a user, I want to be able to search for someone based on multiple traits (up to a
 // maximum of five criteria at once).
 // Algorithm for multiple criteria search
@@ -21,8 +25,6 @@
 //  of the family members and their relation to the found person.
 // Algorithm for seeing  only that person's immediate family members
 //  -Utilizing debugging tool to search for possible solution entry of "family" into prompt box
-
-
 
 //Menu functions.
 //Used for the overall flow of the application.
