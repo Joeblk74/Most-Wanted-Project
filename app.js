@@ -60,9 +60,12 @@ function mainMenu(person, people){
     alert("Could not find that individual.");
     return app(people); // restart
   }
-
-  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
-
+ 
+  if (person.length === 1) {
+    let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  } else {
+    // More than one person was found ...
+ }
   switch(displayOption){
     case "info":
     // TODO: get person's info
@@ -104,6 +107,7 @@ function searchByName(people){
     }
   })
   // TODO: find the person single person object using the name they entered.
+  console.log("Found person info: ",foundPerson)
   return foundPerson;
 }
 
