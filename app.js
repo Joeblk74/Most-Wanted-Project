@@ -101,10 +101,14 @@ function searchByName(people){
       return true;
     }
     else{
+      alert("could not locate individual");
       return false;
     }
   })
-  // TODO: find the person single person object using the name they entered.
+    if(foundPerson.length > 1) {
+      return undefined;
+    }
+
   return foundPerson;
 }
 
@@ -113,31 +117,31 @@ function searchByEyeColor(people){
 
 }
 
-//TODO: add other trait filter functions here.
-function searchByTrait(people){
-let trait = prompt('Would you like to search by gender, age, eyeColor, weight, height or occupation?');
-let result = [];
-switch(trait){
-  case "gender":
-    result = gender(person);
-    displayPeople(result);
-  case "age":
-    result = age(person);
-    displayPeople(result);
-  case "eyeColor":
-    result = eyeColor(person);
-    displayPeople(result);
-  case "weight":
-    result = weight(person);
-    displayPeople(result);
-  case "height":
-    result = height(person);
-    displayPeople(result);
-  case "occupation":
-    result = occupation(person);
-    displayPeople(result);
-}
-}
+// //TODO: add other trait filter functions here.
+// function searchByTrait(people){
+// let trait = prompt('Would you like to search by gender, age, eyeColor, weight, height or occupation?');
+// let result = [];
+// switch(trait){
+//   case "gender":
+//     result = gender(person);
+//     displayPeople(result);
+//   case "age":
+//     result = age(person);
+//     displayPeople(result);
+//   case "eyeColor":
+//     result = eyeColor(person);
+//     displayPeople(result);
+//   case "weight":
+//     result = weight(person);
+//     displayPeople(result);
+//   case "height":
+//     result = height(person);
+//     displayPeople(result);
+//   case "occupation":
+//     result = occupation(person);
+//     displayPeople(result);
+// }
+// }
 
 
 
