@@ -29,7 +29,7 @@
 //Menu functions.
 //Used for the overall flow of the application.
 /////////////////////////////////////////////////////////////////
-//#region 
+//#region
 
 // app is the function called to start the entire application
 function app(people){
