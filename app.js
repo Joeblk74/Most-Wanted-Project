@@ -126,6 +126,20 @@ let result = people.filter(function(potentialMatch){
    return result[0];
 }
 
+function dob(people){
+  let dob = promptFor("Enter date of birth, m/d/year", autoValid);
+  let result = people.filter(function(potentialMatch){
+    if(potentialMatch.dob === dob){
+      return true;
+    }
+    else{
+  
+      return false;
+    }
+  })
+     return result[0];
+  }
+  
 function eyeColor(people){
   let eyeColor = promptFor("What is the person's eye color?", autoValid);
   let result = people.filter(function(potentialMatch){
@@ -140,13 +154,31 @@ function eyeColor(people){
 
   return result[0];
 }
+
+function occupation(people){
+  let occupation = promptFor("Enter the occupation to filter by: ", autoValid);
+  let result = people.filter(function(potentialMatch){
+    if(potentialMatch.occupation === occupation){
+      return true;
+    }
+    else{
+
+      return false;
+    }
+  })
+
+  return result[0];
+}
 // //TODO: add other trait filter functions here.
 function searchByTrait(people){
-let trait = prompt('Would you like to search by gender, age, eyeColor, weight, height or occupation?');
+let trait = prompt('Would you like to search by gender, dob, eyeColor, weight, height or occupation?');
 let result;
 switch(trait){
   case "gender":
     result = gender(people);
+    displayPeople(result);
+  case "dob":
+    result = dob(people);
     displayPeople(result);
   case "eyeColor":
     result = eyeColor(people);
@@ -227,6 +259,5 @@ function autoValid(input){
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
 function customValidation(input){
-  
-}
 
+}
