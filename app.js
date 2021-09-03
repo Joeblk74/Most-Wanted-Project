@@ -55,7 +55,7 @@ function app(people){
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
+//   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
   if(!person){
     alert("Could not find that individual.");
@@ -105,10 +105,9 @@ function searchByName(people){
       return false;
     }
   })
-    if(foundPerson.length > 1) {
-      return undefined;
-    }
 
+  // TODO: find the person single person object using the name they entered.
+  console.log("Found person info: ",foundPerson)
   return foundPerson;
 }
 
@@ -170,8 +169,6 @@ function displayPerson(person){
   personInfo += "occupation:" + person.occupation + "\n";
   alert(personInfo);
 }
-
-
 //Validation functions.
 //Functions to validate user input.
 /////////////////////////////////////////////////////////////////
