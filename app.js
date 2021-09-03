@@ -62,7 +62,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch(displayOption){
     case "info":
@@ -101,46 +101,67 @@ function searchByName(people){
       return true;
     }
     else{
-      alert("could not locate individual");
+      
       return false;
     }
   })
 
   // TODO: find the person single person object using the name they entered.
-  console.log("Found person info: ",foundPerson)
-  return foundPerson;
+
+  return foundPerson[0];
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
-function searchByEyeColor(people){
+function gender(people){
+let gender = promptFor("Enter Male or Female", autoValid);
+let result = people.filter(function(potentialMatch){
+  if(potentialMatch.gender === gender){
+    return true;
+  }
+  else{
 
+    return false;
+  }
+})
+   return result[0];
 }
 
+function eyeColor(people){
+  let eyeColor = promptFor("What is the person's eye color?", autoValid);
+  let result = people.filter(function(potentialMatch){
+    if(potentialMatch.eyeColor === eyeColor){
+      return true;
+    }
+    else{
+
+      return false;
+    }
+  })
+
+  return result[0];
+}
 // //TODO: add other trait filter functions here.
-// function searchByTrait(people){
-// let trait = prompt('Would you like to search by gender, age, eyeColor, weight, height or occupation?');
-// let result = [];
-// switch(trait){
-//   case "gender":
-//     result = gender(person);
-//     displayPeople(result);
-//   case "age":
-//     result = age(person);
-//     displayPeople(result);
-//   case "eyeColor":
-//     result = eyeColor(person);
-//     displayPeople(result);
-//   case "weight":
-//     result = weight(person);
-//     displayPeople(result);
-//   case "height":
-//     result = height(person);
-//     displayPeople(result);
-//   case "occupation":
-//     result = occupation(person);
-//     displayPeople(result);
-// }
-// }
+function searchByTrait(people){
+let trait = prompt('Would you like to search by gender, age, eyeColor, weight, height or occupation?');
+let result;
+switch(trait){
+  case "gender":
+    result = gender(people);
+    displayPeople(result);
+  case "eyeColor":
+    result = eyeColor(people);
+    displayPeople(result);
+  case "weight":
+    result = weight(people);
+    displayPeople(result);
+  case "height":
+    result = height(people);
+    displayPeople(result);
+  case "occupation":
+    result = occupation(people);
+    displayPeople(result);
+}
+}
 
 
 
