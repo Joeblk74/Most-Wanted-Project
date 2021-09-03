@@ -115,13 +115,29 @@ function searchByEyeColor(people){
 
 //TODO: add other trait filter functions here.
 function searchByTrait(people){
-let trait = prompt('Would you like to search by gender, age, eye color, weight or height?');
+let trait = prompt('Would you like to search by gender, age, eyeColor, weight, height or occupation?');
 let result = [];
 switch(trait){
-  case 'gender':
-    results = gender(person);
-    displayPeople(results)
-}}
+  case "gender":
+    result = gender(person);
+    displayPeople(result);
+  case "age":
+    result = age(person);
+    displayPeople(result);
+  case "eyeColor":
+    result = eyeColor(person);
+    displayPeople(result);
+  case "weight":
+    result = weight(person);
+    displayPeople(result);
+  case "height":
+    result = height(person);
+    displayPeople(result);
+  case "occupation":
+    result = occupation(person);
+    displayPeople(result);
+}
+}
 
 
 
@@ -140,11 +156,14 @@ function displayPeople(people){
 }
 
 function displayPerson(person){
-  // print all of the information about a person:
-  // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
-  // TODO: finish getting the rest of the information to display.
+  personInfo += "gender:" + person.gender + "\n";
+  personInfo += "dob:" + person.dob + "\n";
+  personInfo += "eyeColor:" + person.eyeColor + "\n";
+  personInfo += "weight:" + person.weight + "\n";
+  personInfo += "height:" + person.height + "\n";
+  personInfo += "occupation:" + person.occupation + "\n";
   alert(personInfo);
 }
 
