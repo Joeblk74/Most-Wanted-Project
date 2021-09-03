@@ -110,6 +110,31 @@ function searchByName(people) {
 
   return foundPerson[0];
 }
+// //TODO: add other trait filter functions here.
+function searchByTrait(people) {
+  let trait = prompt('Would you like to search by gender, dob, eyeColor, weight, height or occupation?');
+  let result;
+  switch (trait) {
+    case "gender":
+      result = gender(people);
+      displayPeople(result);
+    case "dob":
+      result = dob(people);
+      displayPeople(result);
+    case "eyeColor":
+      result = eyeColor(people);
+      displayPeople(result);
+    case "weight":
+      result = weight(people);
+      displayPeople(result);
+    case "height":
+      result = height(people);
+      displayPeople(result);
+    case "occupation":
+      result = occupation(people);
+      displayPeople(result);
+  }
+}
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function gender(people) {
@@ -154,137 +179,97 @@ function eyeColor(people) {
 
   return result[0];
 }
-
-function height(people) {
-  let height = promptFor("What is the peron's height?", autoValid);
+function occupation(people) {
+  let occupation = promptFor("Enter the occupation to filter by: ", autoValid);
   let result = people.filter(function (potentialMatch) {
-    if (potentialMatch.height === height) {
+    if (potentialMatch.occupation === occupation) {
       return true;
     }
     else {
-      function occupation(people) {
-        let occupation = promptFor("Enter the occupation to filter by: ", autoValid);
-        let result = people.filter(function (potentialMatch) {
-          if (potentialMatch.occupation === occupation) {
-            return true;
-          }
-          else {
 
-            return false;
-          }
-        })
+      return false;
+    }
+  })
 
-        return result[0];
-      }
-      // //TODO: add other trait filter functions here.
-      function searchByTrait(people) {
-        let trait = prompt('Would you like to search by gender, dob, eyeColor, weight, height or occupation?');
-        let result;
-        switch (trait) {
-          case "gender":
-            result = gender(people);
-            displayPeople(result);
-          case "dob":
-            result = dob(people);
-            displayPeople(result);
-          case "eyeColor":
-            result = eyeColor(people);
-            displayPeople(result);
-          case "weight":
-            result = weight(people);
-            displayPeople(result);
-          case "height":
-            result = height(people);
-            displayPeople(result);
-          case "occupation":
-            result = occupation(people);
-            displayPeople(result);
-        }
+  return result[0];
+}
 
-        // //TODO: add other trait filter functions here.
-        function searchByTrait(people) {
-          let trait = prompt('Would you like to search by gender, age, eyeColor, weight, height or occupation?');
-          let result;
-          switch (trait) {
-            case "gender":
-              result = gender(people);
-              displayPeople(result);
-            case "eyeColor":
-              result = eyeColor(people);
-              displayPeople(result);
-            case "weight":
-              result = weight(people);
-              displayPeople(result);
-            case "height":
-              result = height(people);
-              displayPeople(result);
-            case "occupation":
-              result = occupation(people);
-              displayPeople(result);
-          }
-        }
+
+function height(people) {
+  let height = promptFor("What is the person's height?", autoValid);
+  let result = people.filter(function (potentialMatch) {
+    if (potentialMatch.height === height) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+
+  return result;
+}
 
 
 
-        //#endregion
+//#endregion
 
-        //Display functions.
-        //Functions for user interface.
-        /////////////////////////////////////////////////////////////////
-        //#region 
+//Display functions.
+//Functions for user interface.
+/////////////////////////////////////////////////////////////////
+//#region 
 
-        // alerts a list of people
-        function displayPeople(people) {
-          alert(people.map(function (person) {
-            return person.firstName + " " + person.lastName;
-          }).join("\n"));
-        }
+// alerts a list of people
+function displayPeople(people) {
+  alert(people.map(function (person) {
+    return person.firstName + " " + person.lastName;
+  }).join("\n"));
+}
 
-        function displayPerson(person) {
-          let personInfo = "First Name: " + person.firstName + "\n";
-          personInfo += "Last Name: " + person.lastName + "\n";
-          personInfo += "gender:" + person.gender + "\n";
-          personInfo += "dob:" + person.dob + "\n";
-          personInfo += "eyeColor:" + person.eyeColor + "\n";
-          personInfo += "weight:" + person.weight + "\n";
-          personInfo += "height:" + person.height + "\n";
-          personInfo += "occupation:" + person.occupation + "\n";
-          alert(personInfo);
-        }
-        //Validation functions.
-        //Functions to validate user input.
-        /////////////////////////////////////////////////////////////////
-        //#region 
+function displayPerson(person) {
+  let personInfo = "First Name: " + person.firstName + "\n";
+  personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "gender:" + person.gender + "\n";
+  personInfo += "dob:" + person.dob + "\n";
+  personInfo += "eyeColor:" + person.eyeColor + "\n";
+  personInfo += "weight:" + person.weight + "\n";
+  personInfo += "height:" + person.height + "\n";
+  personInfo += "occupation:" + person.occupation + "\n";
+  alert(personInfo);
+}
+//Validation functions.
+//Functions to validate user input.
+/////////////////////////////////////////////////////////////////
+//#region 
 
-        //a function that takes in a question to prompt, and a callback function to validate the user input.
-        //response: Will capture the user input.
-        //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
-        //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
-        function promptFor(question, valid) {
-          let isValid;
-          do {
-            var response = prompt(question).trim();
-            isValid = valid(response);
-          } while (response === "" || isValid === false)
-          return response;
-        }
+//a function that takes in a question to prompt, and a callback function to validate the user input.
+//response: Will capture the user input.
+//isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
+//this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
+function promptFor(question, valid) {
+  let isValid;
+  do {
+    var response = prompt(question).trim();
+    isValid = valid(response);
+  } while (response === "" || isValid === false)
+  return response;
+}
 
-        // helper function/callback to pass into promptFor to validate yes/no answers.
-        function yesNo(input) {
-          if (input.toLowerCase() == "yes" || input.toLowerCase() == "no") {
-            return true;
-          }
-          else {
-            return false;
-          }
-        }
+// helper function/callback to pass into promptFor to validate yes/no answers.
+function yesNo(input) {
+  if (input.toLowerCase() == "yes" || input.toLowerCase() == "no") {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
 
-        // helper function to pass in as default promptFor validation.
-        //this will always return true for all inputs.
-        function autoValid(input) {
-          return true; // default validation only
-        }
+// helper function to pass in as default promptFor validation.
+//this will always return true for all inputs.
+function autoValid(input) {
+  return true; // default validation only
+}
 
-        //Unfinished validation function you can use for any of your custom validation callbacks.
-        //can be used for things like eye color validation for example.
-        function customValidation(input) {
+//Unfinished validation function you can use for any of your custom validation callbacks.
+//can be used for things like eye color validation for example.
+function customValidation(input) {
+}
