@@ -40,9 +40,10 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      // TODO: search by traits
-      break;
+      searchResults = searchByTrait(people);
+    break;
       default:
+        alert('nop')
     app(people); // restart app
       break;
   }
@@ -54,18 +55,15 @@ function app(people){
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
+//   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
   if(!person){
     alert("Could not find that individual.");
     return app(people); // restart
   }
- 
-  if (person.length === 1) {
-    let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
-  } else {
-    // More than one person was found ...
- }
+
+  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+
   switch(displayOption){
     case "info":
     // TODO: get person's info
@@ -117,6 +115,14 @@ function searchByEyeColor(people){
 }
 
 //TODO: add other trait filter functions here.
+function searchByTrait(people){
+let trait = prompt('Would you like to search by gender, age, eye color, weight or height?');
+let result = [];
+switch(trait){
+  case 'gender':
+    results = gender(person);
+    displayPeople(results)
+}}
 
 
 
@@ -142,11 +148,6 @@ function displayPerson(person){
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
 }
-
-//#endregion
-
-
-
 //Validation functions.
 //Functions to validate user input.
 /////////////////////////////////////////////////////////////////
@@ -187,4 +188,3 @@ function customValidation(input){
   
 }
 
-//#endregion
